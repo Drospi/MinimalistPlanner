@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import MonthlyPlanScreen from './screens/MonthlyPlanScreen';
+import WeeklyPlanScreen from './screens/WeeklyPlanScreen';
+import DailyPlanScreen from './screens/DailyPlanScreen';
+import GoalScreen from './screens/GoalScreen';
+import HomeWorkScreen from './screens/HomeWorkScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Home" 
+          component={HomeScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="MonthlyPlan" 
+          component={MonthlyPlanScreen} 
+          options={{ title: 'Plan Mensual' }}
+        />
+        <Stack.Screen 
+          name="WeeklyPlan"
+          component={WeeklyPlanScreen}
+          options={{ title: 'Plan Semanal' }}
+        />
+        <Stack.Screen 
+          name="DailyPlan"
+          component={DailyPlanScreen}
+          options={{ title: 'Plan Diario' }}
+        />
+        <Stack.Screen 
+          name="Goal"
+          component={GoalScreen}
+          options={{ title: 'Metas' }}
+        />
+        <Stack.Screen 
+          name="HomeWork"
+          component={HomeWorkScreen}
+          options={{ title: 'Tareas' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
